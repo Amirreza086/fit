@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --accent: #f97316;
+  --accent2: #0ea5e9;
+  --green: #22c55e;
+}
+
+html, body {
+  height: 100%;
+  direction: rtl;
+}
+
+body {
+  font-family: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  background: #0a0f1e;
+  color: #f1f5f9;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(249,115,22,0.4) transparent;
+}
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-thumb { background: rgba(249,115,22,0.4); border-radius: 999px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+::selection { background: rgba(249,115,22,0.3); }
+
+/* Ripple */
+.ripple {
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.ripple::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  top: var(--ry, 50%);
+  left: var(--rx, 50%);
+  transform: translate(-50%, -50%) scale(0);
+  background: rgba(255,255,255,0.25);
+  pointer-events: none;
+}
+
+.ripple:active::after {
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  transition: width 0.5s ease, height 0.5s ease, opacity 0.6s ease, transform 0.5s ease;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(249,115,22,0.6);
+  outline-offset: 3px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(249,115,22,0.55); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 14px rgba(249,115,22,0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeUp   { animation: fadeUp 0.55s ease both; }
+.animate-fadeIn   { animation: fadeIn 0.4s ease both; }
+.animate-pulse-ring { animation: pulse-ring 2s infinite; }
+.animate-float    { animation: float 3s ease-in-out infinite; }
+.animate-countUp  { animation: countUp 0.5s cubic-bezier(.34,1.56,.64,1) both; }
+.animate-spin-slow { animation: spin-slow 12s linear infinite; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.glass-dark {
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+}
+
+.progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f97316, #fbbf24);
+  transition: width 1s cubic-bezier(.4,0,.2,1);
+}
+
+.tab-active {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(249,115,22,0.4);
+}
