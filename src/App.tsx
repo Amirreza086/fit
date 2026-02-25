@@ -170,6 +170,10 @@ function HomePage({ setTab }: { setTab: (t: Tab) => void }) {
             <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse-ring inline-block"></span>
             اپلیکیشن ورزشی هوشمند
           </div>
+          <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 rounded-full px-3 py-1 text-xs text-orange-300 mb-4 animate-fadeUp">
+            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse-ring inline-block"></span>
+            سازنده : امیررضا اسگندرزاده
+          </div>
           <h1 className="text-3xl sm:text-4xl font-black leading-tight mb-3 animate-fadeUp delay-100">
             <span className="gradient-text">قوی‌تر</span> از دیروز،<br />
             <span className="text-white">آماده‌تر برای فردا</span>
